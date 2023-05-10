@@ -11,6 +11,7 @@
 ## Technologies
 - typescript - была выбрана для уменьшения ошибок и ошибок интеграции модулей в задаче.
 - firebase
+- react-router-dom
 - sass
 - tailwindcss
 
