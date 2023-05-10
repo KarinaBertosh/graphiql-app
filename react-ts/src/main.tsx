@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import { firebaseConfig } from "./firebaseConfig/farebaseConfig";
 import "./main.scss";
+import "./addTailwind.css";
 
 import { routerObj } from "./router/RouterConfig";
 

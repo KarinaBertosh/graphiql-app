@@ -5,24 +5,34 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import { User } from "firebase/auth";
 import { UserLoginData } from "../interfaces/databaseInterfaces";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 interface IUserAuth {
-  setAuth: (user: boolean) => void;
   loginUser: (authData: UserLoginData) => string;
+  registerUser: (authData: UserLoginData) => string;
   logoutUser: () => string;
   setLoading: Dispatch<SetStateAction<boolean>>;
   ifAuth: boolean;
   user: User | null;
+  ifLoginExist: boolean;
+  setIfLoginExist: Dispatch<SetStateAction<boolean>>;
 }
 
 export const AuthContext = createContext<IUserAuth>({
-  setAuth: () => {},
   setLoading: () => {},
+  setIfLoginExist: () => {},
   loginUser: () => {
+    return "";
+  },
+  registerUser: () => {
     return "";
   },
   logoutUser: () => {
@@ -30,13 +40,12 @@ export const AuthContext = createContext<IUserAuth>({
   },
   ifAuth: false,
   user: null,
+  ifLoginExist: true,
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [ifAuth, setIfAuth] = useState(false);
-  const setAuth = (value: boolean) => {
-    setIfAuth(value);
-  };
+  const [ifLoginExist, setIfLoginExist] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
@@ -46,11 +55,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     let response = "";
     signInWithEmailAndPassword(auth, authData.email, authData.password)
       .then(() => {
-        setAuth(true);
+        setIfAuth(true);
       })
       .catch((error) => {
         response = error.message;
       });
+    setLoading(false);
+    return response;
+  };
+
+  const registerUser = (authData: UserLoginData) => {
+    setLoading(true);
+    let response = "";
+    createUserWithEmailAndPassword(auth, authData.email, authData.password)
+      .then(() => setIfAuth(true))
+      .catch((error) => {
+        setIfAuth(false);
+        response = error.message;
+      });
+    setLoading(false);
     return response;
   };
 
@@ -58,7 +81,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     let response = "";
     signOut(auth)
       .then(() => {
-        setAuth(false);
+        setIfAuth(false);
       })
       .catch((error) => {
         response = error.message;
@@ -71,7 +94,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(user);
       if (user) {
         setIfAuth(true);
-      } else setAuth(false);
+      } else setIfAuth(false);
       setLoading(false);
     });
     return unsubscribe;
@@ -79,7 +102,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <AuthContext.Provider
-      value={{ ifAuth, setAuth, setLoading, user, loginUser, logoutUser }}
+      value={{
+        ifAuth,
+        setLoading,
+        user,
+        loginUser,
+        registerUser,
+        logoutUser,
+        ifLoginExist,
+        setIfLoginExist,
+      }}
     >
       {!loading && children}
       {loading && <LoadingSpinner />}

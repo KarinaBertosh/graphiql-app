@@ -8,7 +8,7 @@ export const ProtectedRoute = ({ needAuth }: { needAuth: boolean }) => {
     return (
       <>
         {!ifAuth && <Outlet />}
-        {ifAuth && <Navigate to="/" />}
+        {ifAuth && <Navigate to="/main" />}
       </>
     );
   }
