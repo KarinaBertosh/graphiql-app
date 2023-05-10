@@ -11,6 +11,8 @@
 ## Technologies
 - typescript - была выбрана для уменьшения ошибок и ошибок интеграции модулей в задаче.
 - firebase
+- sass
+- tailwindcss
 
 ## Available scripts
 
