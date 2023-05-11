@@ -4,28 +4,27 @@ import { Button } from "./Button";
 import { AuthContext } from "../context/AuthProvider";
 
 export const Header = () => {
-  const { isWelcomePage } = useContext(AuthContext);
-  const { setIsWelcomePage } = useContext(AuthContext);
+  const { isWelcomePage, setIsWelcomePage } = useContext(AuthContext);
   const router = useNavigate();
 
-  const goToAuthPAge = () => {
+  const goToAuthPage = () => {
     router("/auth");
     setIsWelcomePage(!isWelcomePage);
   };
 
-  const goToWelcomePAge = () => {
+  const goToWelcomePage = () => {
     router("/");
     setIsWelcomePage(!isWelcomePage);
   };
 
   return isWelcomePage ? (
     <div className="header">
-      <Button buttonText={"Sing In"} buttonAction={goToAuthPAge} />
-      <Button buttonText={"Sing Up"} buttonAction={goToAuthPAge} />
+      <Button buttonText={"Sing In"} buttonAction={goToAuthPage} />
+      <Button buttonText={"Sing Up"} buttonAction={goToAuthPage} />
     </div>
   ) : (
     <div className="header">
-      <Button buttonText={"Back to welcome page"} buttonAction={goToWelcomePAge} />
+      <Button buttonText={"Back to welcome page"} buttonAction={goToWelcomePage} />
     </div>
   );
 };
