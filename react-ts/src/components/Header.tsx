@@ -4,7 +4,8 @@ import { Button } from "./Button";
 import { AuthContext } from "../context/AuthProvider";
 
 export const Header = () => {
-  const { isWelcomePage, setIsWelcomePage } = useContext(AuthContext);
+  const { isWelcomePage, setIsWelcomePage, setIfLoginExist } =
+    useContext(AuthContext);
   const router = useNavigate();
 
   const goToAuthPage = () => {
@@ -19,12 +20,27 @@ export const Header = () => {
 
   return isWelcomePage ? (
     <div className="header">
-      <Button buttonText={"Sing In"} buttonAction={goToAuthPage} />
-      <Button buttonText={"Sing Up"} buttonAction={goToAuthPage} />
+      <Button
+        buttonText={"Sing In"}
+        buttonAction={() => {
+          goToAuthPage();
+          setIfLoginExist(true);
+        }}
+      />
+      <Button
+        buttonText={"Sing Up"}
+        buttonAction={() => {
+          goToAuthPage();
+          setIfLoginExist(false);
+        }}
+      />
     </div>
   ) : (
     <div className="header">
-      <Button buttonText={"Back to welcome page"} buttonAction={goToWelcomePage} />
+      <Button
+        buttonText={"Back to welcome page"}
+        buttonAction={goToWelcomePage}
+      />
     </div>
   );
 };

@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
+import { SubmitHandler } from "react-hook-form";
 import { AuthContext } from "../context/AuthProvider";
 import { UserLoginData } from "../interfaces/databaseInterfaces";
-import { AuthForm } from "../components/AuthComponents/AuthForm";
+import { AuthForm } from "../components/AuthForm";
 import { Button } from "../components/Button";
+import { ILoginFormValues } from "../interfaces/componentsInterfaces";
 
 export const AuthPage = () => {
   const [authData, setAuthData] = useState<UserLoginData>({
@@ -23,9 +25,8 @@ export const AuthPage = () => {
     });
   };
 
-  const submitHandler = (event: React.FormEvent) => {
+  const submitHandler: SubmitHandler<ILoginFormValues> = () => {
     setError("");
-    event.preventDefault();
     if (authData.email && authData.password) {
       const res = ifLoginExist ? loginUser(authData) : registerUser(authData);
       setError(res);

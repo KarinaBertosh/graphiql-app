@@ -44,7 +44,7 @@ export const AuthContext = createContext<IUserAuth>({
   user: null,
   ifLoginExist: true,
   isWelcomePage: true,
-  setIsWelcomePage: () => {} ,
+  setIsWelcomePage: () => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -55,9 +55,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const setIsWelcomePage = (value: boolean) => {
     setIfWelcomePage(value);
   };
-  const setAuth = (value: boolean) => {
-    setIfAuth(value);
-  };
+
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
@@ -123,7 +121,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         logoutUser,
         ifLoginExist,
         setIfLoginExist,
-        setAuth,
         isWelcomePage,
         setIsWelcomePage,
       }}
