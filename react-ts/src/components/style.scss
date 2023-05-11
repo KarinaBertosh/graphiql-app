@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: end;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  width: 100%;
+  background: #ff7f93;
+  margin-top: 1.5rem;
+  flex-shrink: 0;
+}
+
+.footer__logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.github {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 3px;
+}
+
+.footer__rsslogo {
+  width: 100px;
+}
