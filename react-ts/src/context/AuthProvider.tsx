@@ -17,6 +17,8 @@ interface IUserAuth {
   setLoading: Dispatch<SetStateAction<boolean>>;
   ifAuth: boolean;
   user: User | null;
+  isWelcomePage: Boolean;
+  setIsWelcomePage: (ifWelcomePage: boolean) => void;
 }
 
 export const AuthContext = createContext<IUserAuth>({
@@ -30,10 +32,17 @@ export const AuthContext = createContext<IUserAuth>({
   },
   ifAuth: false,
   user: null,
+  isWelcomePage: true,
+  setIsWelcomePage: () => {} ,
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [ifAuth, setIfAuth] = useState(false);
+  const [isWelcomePage, setIfWelcomePage] = useState(true);
+
+  const setIsWelcomePage = (value: boolean) => {
+    setIfWelcomePage(value);
+  };
   const setAuth = (value: boolean) => {
     setIfAuth(value);
   };
@@ -79,7 +88,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <AuthContext.Provider
-      value={{ ifAuth, setAuth, setLoading, user, loginUser, logoutUser }}
+      value={{
+        ifAuth,
+        setAuth,
+        setLoading,
+        user,
+        loginUser,
+        logoutUser,
+        isWelcomePage,
+        setIsWelcomePage,
+      }}
     >
       {!loading && children}
       {loading && <LoadingSpinner />}
