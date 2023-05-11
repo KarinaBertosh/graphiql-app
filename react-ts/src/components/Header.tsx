@@ -1,3 +1,13 @@
+import { useNavigate } from "react-router-dom";
+import { Button } from "./Button";
+
 export const Header = () => {
-  return <div>This is Nice Sticky Header</div>;
+  const router = useNavigate();
+  
+  return (
+    <div className="header">
+      <Button buttonText={"Sing In"} buttonAction={() => router("/auth")} />
+      <Button buttonText={"Sing Up"} buttonAction={() => router("/auth")} />
+    </div>
+  );
 };
