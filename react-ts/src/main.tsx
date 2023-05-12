@@ -5,6 +5,11 @@ import firebase from "firebase/compat/app";
 import { firebaseConfig } from "./firebaseConfig/farebaseConfig";
 import "./localization/i18next";
 import "./main.scss";
+<<<<<<< HEAD
+import "./addTailwind.css";
+
+=======
+>>>>>>> develop
 import { routerObj } from "./router/RouterConfig";
 
 firebase.initializeApp(firebaseConfig);

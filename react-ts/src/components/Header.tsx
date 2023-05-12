@@ -6,8 +6,8 @@ import { LanguageSelect } from "./LanguageSelect";
 import { useTranslation } from "react-i18next";
 
 export const Header = () => {
-  
-  const { isWelcomePage, setIsWelcomePage } = useContext(AuthContext);
+  const { isWelcomePage, setIsWelcomePage, setIfLoginExist } =
+    useContext(AuthContext);
   const router = useNavigate();
   const { t } = useTranslation();
 
@@ -23,14 +23,28 @@ export const Header = () => {
 
   return isWelcomePage ? (
     <div className="header">
-      <Button buttonText={t("sign_in")} buttonAction={goToAuthPage} />
-      
-      <Button buttonText={t("sign_up")} buttonAction={goToAuthPage} />
+      <Button
+        buttonText={t("sign_in")}
+        buttonAction={() => {
+          goToAuthPage();
+          setIfLoginExist(true);
+        }}
+      />
+      <Button
+        buttonText={t("sign_up")}
+        buttonAction={() => {
+          goToAuthPage();
+          setIfLoginExist(false);
+        }}
+      />
       <LanguageSelect />
     </div>
   ) : (
     <div className="header">
-      <Button buttonText={"Back to welcome page"} buttonAction={goToWelcomePage} />
+      <Button
+        buttonText={"Back to welcome page"}
+        buttonAction={goToWelcomePage}
+      />
       <LanguageSelect />
     </div>
   );
