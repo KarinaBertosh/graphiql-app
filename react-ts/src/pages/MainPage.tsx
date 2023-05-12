@@ -19,7 +19,7 @@ export const MainPage = () => {
         <textarea placeholder="Variables"></textarea>
         <img src={start} className="documentation__button__start" />
       </div>
-      <div className="received-code">received code</div>
+      <textarea placeholder="received code"></textarea>
     </div>
   );
 };

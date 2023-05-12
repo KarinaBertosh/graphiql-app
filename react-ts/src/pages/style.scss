@@ -80,6 +80,19 @@ textarea {
   width: 50%
 }
 
+@media screen and (min-width: 540px) and (max-width: 730px) {
+  .main-page {
+    flex-direction: column;
+  }
+
+  textarea {
+    width: 400px;
+    height: 160px;
+    border: 3px solid #ff7f93;
+    border-radius: 8px;
+  }
+}
+
 @media screen and (min-width: 320px) and (max-width: 540px) {
   .description {
     &__title {
