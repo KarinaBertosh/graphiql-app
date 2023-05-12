@@ -43,7 +43,7 @@ export const AuthForm = ({
       </h3>
       <input
         type="email"
-        id="login"
+        id="email"
         className="border py-2 px-4 mb-2 w-full outline-0"
         placeholder="Enter login"
         {...register("login", {

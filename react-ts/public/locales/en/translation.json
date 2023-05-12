@@ -8,5 +8,8 @@
   "main_page": "Main Page",
   "main_page_description": "You are on the welcome page Graphi QL. You are on the welcome page. If you are registered, click the 'Sing In' button. If you are not registered, click the 'Sing Up' button",
   "sign_in": "Sign In",
-  "sign_up": "Sign Up"
+  "sign_up": "Sign Up",
+  "log_out": "Log Out",
+  "welcome": "Welcome page",
+  "main": "Main page"
 }
