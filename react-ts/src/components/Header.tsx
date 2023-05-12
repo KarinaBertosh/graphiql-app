@@ -6,20 +6,9 @@ import { LanguageSelect } from "./LanguageSelect";
 import { useTranslation } from "react-i18next";
 
 export const Header = () => {
-  const { isWelcomePage, setIsWelcomePage, setIfLoginExist, user, logoutUser } =
-    useContext(AuthContext);
+  const { setIfLoginExist, user, logoutUser } = useContext(AuthContext);
   const router = useNavigate();
   const { t } = useTranslation();
-
-  const goToAuthPage = () => {
-    router("/auth");
-    setIsWelcomePage(!isWelcomePage);
-  };
-
-  // const goToWelcomePage = () => {
-  //   router("/");
-  //   setIsWelcomePage(!isWelcomePage);
-  // };
 
   return (
     <header className="header">
@@ -44,14 +33,14 @@ export const Header = () => {
           <Button
             buttonText={t("sign_in")}
             buttonAction={() => {
-              goToAuthPage();
+              router("/auth");
               setIfLoginExist(true);
             }}
           />
           <Button
             buttonText={t("sign_up")}
             buttonAction={() => {
-              goToAuthPage();
+              router("/auth");
               setIfLoginExist(false);
             }}
           />
