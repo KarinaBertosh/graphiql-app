@@ -4,3 +4,25 @@
   height: 100%;
   flex: 1;
 }
+
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  &__img {
+    width: 50%;
+    margin-right: 20px;
+  }
+  &__title {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 540px) {
+  .description {
+    &__title {
+      font-size: 12px;
+    }
+  }
+}
