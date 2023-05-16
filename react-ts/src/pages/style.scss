@@ -60,7 +60,7 @@
   }
 }
 
-input {
+textarea {
   width: 400px;
   height: 240px;
   border: 3px solid #ff7f93;
@@ -85,7 +85,7 @@ input {
     flex-direction: column;
   }
 
-  input {
+  textarea {
     width: 400px;
     height: 160px;
     border: 3px solid #ff7f93;
@@ -102,7 +102,7 @@ input {
   .main-page {
     flex-direction: column;
   }
-  input {
+  textarea {
     width: 250px;
     height: 200px;
   }
