@@ -74,10 +74,15 @@ textarea {
   position: relative;
   flex-direction: column;
   margin-right: 10px;
+  height: 100%;
 }
 
 .received-code {
   width: 50%;
+}
+
+#addData {
+  flex-grow: 1;
 }
 
 @media screen and (min-width: 540px) and (max-width: 730px) {
