@@ -24,8 +24,6 @@ interface IUserAuth {
   user: User | null;
   ifLoginExist: boolean;
   setIfLoginExist: Dispatch<SetStateAction<boolean>>;
-  isWelcomePage: Boolean;
-  setIsWelcomePage: (ifWelcomePage: boolean) => void;
 }
 
 export const AuthContext = createContext<IUserAuth>({
@@ -43,18 +41,11 @@ export const AuthContext = createContext<IUserAuth>({
   ifAuth: false,
   user: null,
   ifLoginExist: true,
-  isWelcomePage: true,
-  setIsWelcomePage: () => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [ifAuth, setIfAuth] = useState(false);
   const [ifLoginExist, setIfLoginExist] = useState(false);
-  const [isWelcomePage, setIfWelcomePage] = useState(true);
-
-  const setIsWelcomePage = (value: boolean) => {
-    setIfWelcomePage(value);
-  };
 
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -121,8 +112,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         logoutUser,
         ifLoginExist,
         setIfLoginExist,
-        isWelcomePage,
-        setIsWelcomePage,
       }}
     >
       {!loading && children}

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { UserLoginData } from "../interfaces/databaseInterfaces";
 import { ErrorMessage } from "./ErrorMessage";
@@ -25,10 +25,15 @@ export const AuthForm = ({
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<ILoginFormValues>({
     reValidateMode: "onSubmit",
   });
+
+  useEffect(() => {
+    reset();
+  }, [ifLoginExist]);
 
   return (
     <form onSubmit={handleSubmit(submitHandler)} className="p-5 my-5">
@@ -52,6 +57,7 @@ export const AuthForm = ({
         value={authData.email}
         onChange={handleChange}
       />
+      {errors.login && <ErrorMessage error={String(errors.login.message)} />}
       <input
         type="password"
         id="password"
