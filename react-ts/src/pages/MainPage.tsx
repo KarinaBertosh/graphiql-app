@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { gql } from "@apollo/client";
-import doc from "../assets/doc.png";
 import start from "../assets/start.png";
 import { Response } from "../components/Response";
+import { Schema } from "../components/Schema";
 
 export const MainPage = () => {
   const defaultValue = `query MyQuery {
@@ -23,13 +23,8 @@ export const MainPage = () => {
     ${defaultValue}
   `);
   const [addData, setAddData] = useState(defaultValue);
-  const [isOpenDocumentation, setIsOpenDocumentation] = useState(false);
   const [ifRequest, setIfRequest] = useState(false);
   const [error, setError] = useState("");
-
-  const openDocumentation = () => {
-    setIsOpenDocumentation(!isOpenDocumentation);
-  };
 
   const getData = () => {
     try {
@@ -47,10 +42,7 @@ export const MainPage = () => {
 
   return (
     <main className="pages main-page">
-      <div onClick={openDocumentation} className="documentation">
-        <img src={doc} className="documentation__button" />
-        {isOpenDocumentation ? <div>Documentation</div> : ""}
-      </div>
+      <Schema />
       <div className="redactor">
         <textarea
           id="addData"

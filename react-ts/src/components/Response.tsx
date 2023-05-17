@@ -19,9 +19,5 @@ export const Response = ({ addData }: { addData: DocumentNode }) => {
     }
   };
 
-  //   useEffect(() => {
-  //     getData();
-  //   }, [addData]);
-
   return <div placeholder="received code">{getData()}</div>;
 };
