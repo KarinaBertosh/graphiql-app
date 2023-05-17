@@ -52,3 +52,10 @@ button:focus-visible {
   background-color: #df7d8b;
 }
 
+@media screen and (min-width: 320px) and (max-width: 540px) {
+  button {
+    font-weight: 300;
+    margin: 2px;
+    font-size: 12px;
+  }
+}
