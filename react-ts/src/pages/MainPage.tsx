@@ -1,7 +1,8 @@
 import { useState } from "react";
-import doc from "../assets/doc.png";
-import { useQuery, gql } from "@apollo/client";
+import { gql } from "@apollo/client";
 import start from "../assets/start.png";
+import { Response } from "../components/Response";
+import { Schema } from "../components/Schema";
 
 export const MainPage = () => {
   const defaultValue = `query MyQuery {
@@ -17,60 +18,47 @@ export const MainPage = () => {
       }
     }
   }`;
-  const DEFAULT_DATA = gql`
+
+  const [request, setRequest] = useState(gql`
     ${defaultValue}
-  `;
+  `);
+  const [addData, setAddData] = useState(defaultValue);
+  const [ifRequest, setIfRequest] = useState(false);
+  const [error, setError] = useState("");
 
-  const [addData, setAddData] = useState(DEFAULT_DATA);
-  const [isOpenDocumentation, setIsOpenDocumentation] = useState(false);
-  const openDocumentation = () => {
-    setIsOpenDocumentation(!isOpenDocumentation);
-  };
-
-  const GET_DATA = gql`
-    ${addData}
-  `;
-
-  function getDate() {
+  const getData = () => {
     try {
-      const { loading, error, data } = useQuery(GET_DATA);
-      if (loading) return `Loading ...`;
-      if (error) return `Error: ${JSON.stringify(error.message)}`;
-      return data;
+      const requestGql = gql`
+        ${addData}
+      `;
+      setError("");
+      setIfRequest(true);
+      setRequest(requestGql);
+      return;
     } catch (errors) {
-      console.error(errors);
+      setError(JSON.stringify(errors));
     }
-  }
-
-  const sendData = () => {
-    const value = document.getElementById("addData")!.value;
-    console.log("value", value);
-    setAddData(value);
   };
 
   return (
-    <div className="pages main-page">
-      <div onClick={openDocumentation} className="documentation">
-        <img src={doc} className="documentation__button" />
-        {isOpenDocumentation ? <div>Documentation</div> : ""}
-      </div>
+    <main className="pages main-page">
+      <Schema />
       <div className="redactor">
         <textarea
           id="addData"
           placeholder="Code"
-          defaultValue={defaultValue}
+          value={addData}
+          onChange={(e) => setAddData(e.target.value)}
         ></textarea>
         <textarea placeholder="Variables"></textarea>
         <img
           src={start}
           className="documentation__button__start"
-          onClick={sendData}
+          onClick={getData}
         />
       </div>
-      <textarea
-        placeholder="received code"
-        value={JSON.stringify(getDate())}
-      ></textarea>
-    </div>
+      {ifRequest && !error && <Response addData={request} />}
+      {error && <div>{error}</div>}
+    </main>
   );
 };

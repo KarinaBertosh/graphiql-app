@@ -36,15 +36,15 @@ export const AuthForm = ({
   }, [ifLoginExist]);
 
   return (
-    <form onSubmit={handleSubmit(submitHandler)} className="p-5 my-5">
-      <h3>
+    <form onSubmit={handleSubmit(submitHandler)} className="form">
+      <p>
         {ifLoginExist && "Login with your email and password"}
         {!ifLoginExist && "Register new user"}
-      </h3>
+      </p>
       <input
         type="email"
         id="email"
-        className="border py-2 px-4 mb-2 w-full outline-0"
+        className="form__input"
         placeholder="Enter login"
         {...register("login", {
           required: "required",
@@ -61,7 +61,7 @@ export const AuthForm = ({
       <input
         type="password"
         id="password"
-        className="border py-2 px-4 mb-2 w-full outline-0"
+        className="form__input"
         placeholder="Enter password"
         {...register("password", {
           required: "required",
@@ -84,7 +84,7 @@ export const AuthForm = ({
         <input
           type="password"
           id="passwordRepeat"
-          className="border py-2 px-4 mb-2 w-full outline-0"
+          className="form__input"
           placeholder="Repeat your password"
           {...register("passwordRepeat", {
             required: "required",

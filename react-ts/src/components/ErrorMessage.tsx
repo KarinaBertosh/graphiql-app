@@ -3,5 +3,5 @@ interface ErrorProps {
 }
 
 export function ErrorMessage({ error }: ErrorProps) {
-  return <p className="text-center text-red-500">{error}</p>;
+  return <p className="error-message">{error}</p>;
 }

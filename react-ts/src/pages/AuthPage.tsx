@@ -34,13 +34,9 @@ export const AuthPage = () => {
   };
 
   return (
-    <div className={"w-full grow"}>
-      <div
-        className={
-          "w-[500px] p-5 rounded bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border"
-        }
-      >
-        <div className="text-center">
+    <div className="auth">
+      <div className="auth__form">
+        <div className="form__title">
           {!ifLoginExist && (
             <>
               <h3>Already registered?</h3>
