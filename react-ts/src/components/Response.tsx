@@ -32,8 +32,9 @@ export const Response = ({ addData }: { addData: DocumentNode }) => {
   };
 
   return (
-    <div placeholder="received code" style={{ whiteSpace: "pre" }}>
-      {getData()}
-    </div>
+    <div className="response"
+      placeholder="received code"
+      style={{ whiteSpace: "pre" }}
+    >{getData()}</div>
   );
 };
