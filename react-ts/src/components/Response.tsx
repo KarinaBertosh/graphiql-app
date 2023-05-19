@@ -18,7 +18,11 @@ export const Response = ({ addData }: { addData: DocumentNode }) => {
         return "Loading ...";
       }
       if (error) {
-        return `Error: ${JSON.stringify(error.message)}`;
+        return (
+          <div style={{ whiteSpace: "normal" }}>
+            Error: {JSON.stringify(error.message)}
+          </div>
+        );
       }
       return JSON.stringify(data, replaceText, "\t");
     } catch (errors) {
@@ -28,10 +32,8 @@ export const Response = ({ addData }: { addData: DocumentNode }) => {
   };
 
   return (
-    <textarea
-      placeholder="received code"
-      style={{ whiteSpace: "pre" }}
-      value={getData()}
-    ></textarea>
+    <div placeholder="received code" style={{ whiteSpace: "pre" }}>
+      {getData()}
+    </div>
   );
 };
