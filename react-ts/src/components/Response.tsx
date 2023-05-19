@@ -28,10 +28,9 @@ export const Response = ({ addData }: { addData: DocumentNode }) => {
   };
 
   return (
-    <textarea
+    <div className="response"
       placeholder="received code"
       style={{ whiteSpace: "pre" }}
-      value={getData()}
-    ></textarea>
+    >{getData()}</div>
   );
 };

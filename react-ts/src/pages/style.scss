@@ -67,6 +67,9 @@ textarea {
   border-radius: 8px;
   font-family: Helvetica, Arial;
   font-size: 12px;
+  font-weight: 400;
+  color: #2bab7c;
+  overflow-wrap: break-word;
 }
 
 .redactor {
@@ -86,6 +89,44 @@ textarea {
 #addData {
   flex-grow: 1;
 }
+
+.auth {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.auth__form {
+  position: absolute;
+  padding: 1.25rem;
+  border-width: 1px;
+  background-color: rgb(255 255 255);
+  border-radius: 0.25rem;
+  width: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form__title {
+  text-align: center;
+}
+
+.form {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
+}
+
+.form__input {
+  outline-width: 0px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
 
 @media screen and (min-width: 540px) and (max-width: 730px) {
   .main-page {
@@ -126,39 +167,3 @@ textarea {
   }
 }
 
-.auth {
-  flex-grow: 1;
-  width: 100%;
-}
-
-.auth__form {
-  position: absolute;
-  padding: 1.25rem;
-  border-width: 1px;
-  background-color: rgb(255 255 255);
-  border-radius: 0.25rem;
-  width: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.form__title {
-  text-align: center;
-}
-
-.form {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
-  padding: 1.25rem;
-}
-
-.form__input {
-  outline-width: 0px;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  width: 100%;
-  margin-bottom: 0.5rem;
-}

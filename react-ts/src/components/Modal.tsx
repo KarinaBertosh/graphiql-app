@@ -7,7 +7,6 @@ export const Modal = ({
   active: boolean;
   setActive: () => void;
 }) => {
-  console.log("active", active);
 
   return (
     <div
