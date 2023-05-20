@@ -57,7 +57,9 @@ export const AuthForm = ({
         value={authData.email}
         onChange={handleChange}
       />
-      {errors.login && <ErrorMessage error={String(errors.login.message)} />}
+      <div className="error-wrapper">
+        {errors.login && <ErrorMessage error={String(errors.login.message)} />}
+      </div>
       <input
         type="password"
         id="password"
@@ -65,29 +67,22 @@ export const AuthForm = ({
         placeholder="Enter password"
         {...register("password", {
           required: "required",
-          minLength: {
-            value: 8,
-            message: "min length is 8",
-          },
-          maxLength: {
-            value: 12,
-            message: "max length is 12",
-          },
           validate: {
-            hasSpecialChar: (value = '') =>
-            /[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]/g.test(value) || "Must have at least one special char",
-            hasNumber: (value = '')  => 
-              /[0-9]/.test(value) || "Must have at least one number",            
-            hasLetter: (value = '')  => 
-              /[A-Za-z]/.test(value) || "Must have at least one letter",            
+            allRules: (value = "") =>
+              /^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
+                value
+              ) ||
+              "Minimum eight characters, at least one letter, one number and one special character",
           },
         })}
         aria-invalid={errors.password ? "true" : "false"}
         onChange={handleChange}
       />
-      {errors.password && (
-        <ErrorMessage error={String(errors.password.message)} />
-      )}
+      <div className="error-wrapper">
+        {errors.password && (
+          <ErrorMessage error={String(errors.password.message)} />
+        )}
+      </div>
       {!ifLoginExist && (
         <input
           type="password"
@@ -106,9 +101,11 @@ export const AuthForm = ({
           onChange={handleChange}
         />
       )}
-      {errors.passwordRepeat && (
-        <ErrorMessage error={String(errors.passwordRepeat.message)} />
-      )}
+      <div className="error-wrapper">
+        {errors.passwordRepeat && (
+          <ErrorMessage error={String(errors.passwordRepeat.message)} />
+        )}
+      </div>
       {error && <ErrorMessage error={error} />}
 
       <button
