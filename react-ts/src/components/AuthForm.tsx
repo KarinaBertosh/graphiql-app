@@ -73,6 +73,14 @@ export const AuthForm = ({
             value: 12,
             message: "max length is 12",
           },
+          validate: {
+            hasSpecialChar: (value = '') =>
+            /[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]/g.test(value) || "Must have at least one special char",
+            hasNumber: (value = '')  => 
+              /[0-9]/.test(value) || "Must have at least one number",            
+            hasLetter: (value = '')  => 
+              /[A-Za-z]/.test(value) || "Must have at least one letter",            
+          },
         })}
         aria-invalid={errors.password ? "true" : "false"}
         onChange={handleChange}
