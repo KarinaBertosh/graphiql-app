@@ -3,6 +3,8 @@ import { gql } from "@apollo/client";
 import start from "../assets/start.png";
 import { Response } from "../components/Response";
 import { Schema } from "../components/Schema";
+import { Modal } from "../components/Modal";
+
 
 export const MainPage = () => {
   const defaultValue = `query MyQuery {
@@ -25,6 +27,8 @@ export const MainPage = () => {
   const [addData, setAddData] = useState(defaultValue);
   const [ifRequest, setIfRequest] = useState(false);
   const [error, setError] = useState("");
+  const [errorSyntax, setErrorSyntax] = useState();
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const getData = () => {
     try {
@@ -36,8 +40,14 @@ export const MainPage = () => {
       setRequest(requestGql);
       return;
     } catch (errors) {
-      setError(JSON.stringify(errors));
+      setErrorSyntax(JSON.stringify(errors));
+      setIsOpenModal(!isOpenModal);
     }
+  };
+
+  const setActive = () => {
+    setErrorSyntax('');
+    setIsOpenModal(!isOpenModal);
   };
 
   return (
@@ -58,7 +68,16 @@ export const MainPage = () => {
         />
       </div>
       {ifRequest && !error && <Response addData={request} />}
-      {error && <div>{error}</div>}
+      {error && <textarea value={error}></textarea>}
+      {errorSyntax ? (
+        <Modal
+          error={errorSyntax}
+          active={isOpenModal}
+          setActive={setActive}
+        />
+      ) : (
+        ""
+      )}
     </main>
   );
 };
