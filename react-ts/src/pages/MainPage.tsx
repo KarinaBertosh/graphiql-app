@@ -27,7 +27,7 @@ export const MainPage = () => {
   const [addData, setAddData] = useState(defaultValue);
   const [ifRequest, setIfRequest] = useState(false);
   const [error, setError] = useState("");
-  const [errorSyntax, setErrorSyntax] = useState();
+  const [errorSyntax, setErrorSyntax] = useState<string>();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const getData = () => {
