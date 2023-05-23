@@ -36,9 +36,16 @@
   width: 100px;
 }
 
+.error-wrapper {
+  height: 2.2rem;
+}
+
 .error-message {
+  display: flex;
+  justify-content: flex-start;
   color: #ff7f93;
-  text-align: center;
+  // text-align: center;
+  font-size: 0.8rem;
 }
 
 .modal {
