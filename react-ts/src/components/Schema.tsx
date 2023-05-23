@@ -3,7 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 import { GraphQLSchema, buildClientSchema } from "graphql";
 import { SCHEMA } from "../apollo/schema";
 import doc from "../assets/doc.png";
-import { SchemaTree } from "./SchemaTree";
+import { TypeItem } from "./TypeItem";
 
 export const Schema = () => {
   const { loading, error, data } = useQuery(gql`
@@ -34,10 +34,14 @@ export const Schema = () => {
   useEffect(() => setSchema(getSchema()), [loading]);
 
   return (
-    <div onClick={openDocumentation} className="documentation">
-      <img src={doc} className="documentation__button" />
+    <div className="documentation">
+      <img
+        src={doc}
+        className="documentation__button"
+        onClick={openDocumentation}
+      />
       {isOpenDocumentation && ifSchema && schema && (
-        <SchemaTree schema={schema} />
+        <TypeItem schema={schema} />
       )}
     </div>
   );
