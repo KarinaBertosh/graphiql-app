@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useQuery, gql } from "@apollo/client";
+import { GraphQLSchema, buildClientSchema } from "graphql";
 import { SCHEMA } from "../apollo/schema";
 import doc from "../assets/doc.png";
+import { SchemaTree } from "./SchemaTree";
 
 export const Schema = () => {
   const { loading, error, data } = useQuery(gql`
@@ -10,7 +12,7 @@ export const Schema = () => {
 
   const [ifSchema, setIfSchema] = useState(false);
   const [isOpenDocumentation, setIsOpenDocumentation] = useState(false);
-  const [schema, setSchema] = useState("");
+  const [schema, setSchema] = useState<GraphQLSchema | null>(null);
 
   const openDocumentation = () => {
     setIsOpenDocumentation(!isOpenDocumentation);
@@ -19,21 +21,23 @@ export const Schema = () => {
   const getSchema = () => {
     if (loading) {
       setIfSchema(false);
-      return "Loading ...";
+      return null;
     }
     if (error) {
       setIfSchema(false);
-      return `Error: ${JSON.stringify(error.message)}`;
+      return null;
     }
     setIfSchema(true);
-    return JSON.stringify(data);
+    return buildClientSchema(data);
   };
-  useEffect(() => setSchema(getSchema()));
+
+  useEffect(() => setSchema(getSchema()), [loading]);
+
   return (
     <div onClick={openDocumentation} className="documentation">
       <img src={doc} className="documentation__button" />
-      {isOpenDocumentation && ifSchema && (
-        <div placeholder="received code">{schema}</div>
+      {isOpenDocumentation && ifSchema && schema && (
+        <SchemaTree schema={schema} />
       )}
     </div>
   );

@@ -14,7 +14,6 @@ export const Response = ({ addData }: { addData: DocumentNode }) => {
       }
       return JSON.stringify(data);
     } catch (errors) {
-      console.error(errors);
       return JSON.stringify(errors);
     }
   };

@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: "en",
-    debug: true, //убрать потом
+    // debug: true, //убрать потом
     supportedLngs: ["en", "ru"],
   });
 
