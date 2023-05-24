@@ -26,7 +26,6 @@ export const Response = ({ addData }: { addData: DocumentNode }) => {
       }
       return JSON.stringify(data, replaceText, "\t");
     } catch (errors) {
-      console.error(errors);
       return JSON.stringify(errors);
     }
   };
