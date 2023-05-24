@@ -14,8 +14,6 @@ export const TypeItem = ({
   const [prevType, setPrevType] = useState([""]);
   const [title, setTitle] = useState("Docs");
 
-  console.log(allTypes);
-
   const upperCase = (type: string) =>
     type.charAt(0).toUpperCase() + type.slice(1);
 
@@ -63,8 +61,29 @@ export const TypeItem = ({
       : typeMap[el.toLowerCase()].name;
   };
 
+  const createArgs = (el: string) => {
+    const args = typeMap[el].args;
+    return (
+      "(" +
+      args.map((arg: any) => {
+        return (
+          arg.name +
+          ": " +
+          (arg.type.name
+            ? arg.type.name
+            : arg.type.ofType.name
+            ? arg.type.ofType.name
+            : arg.type.ofType.ofType.ofType.name)
+        );
+      }) +
+      ")"
+    );
+  };
+
   return (
-    <div className={isOpenDocumentation ? "" : "schema-closed"}>
+    <div
+      className={"flex-grow" + (isOpenDocumentation ? "" : " schema-closed")}
+    >
       {prevType.length > 1 && (
         <p
           className="type-name"
@@ -83,6 +102,9 @@ export const TypeItem = ({
             {el}
             {typeMap[el] && (
               <>
+                {typeMap[el].args &&
+                  typeMap[el].args.length > 0 &&
+                  createArgs(el)}
                 {": "}
                 <span
                   className="type-name"

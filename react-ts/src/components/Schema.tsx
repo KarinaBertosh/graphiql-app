@@ -2,21 +2,20 @@ import { useEffect, useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import { GraphQLSchema, buildClientSchema } from "graphql";
 import { SCHEMA } from "../apollo/schema";
-import doc from "../assets/doc.png";
 import { TypeItem } from "./TypeItem";
 
-export const Schema = () => {
+export const Schema = ({
+  isOpenDocumentation,
+}: {
+  isOpenDocumentation: boolean;
+}) => {
   const { loading, error, data } = useQuery(gql`
     ${SCHEMA}
   `);
 
   const [ifSchema, setIfSchema] = useState(false);
-  const [isOpenDocumentation, setIsOpenDocumentation] = useState(false);
-  const [schema, setSchema] = useState<GraphQLSchema | null>(null);
 
-  const openDocumentation = () => {
-    setIsOpenDocumentation(!isOpenDocumentation);
-  };
+  const [schema, setSchema] = useState<GraphQLSchema | null>(null);
 
   const getSchema = () => {
     if (loading) {
@@ -34,15 +33,10 @@ export const Schema = () => {
   useEffect(() => setSchema(getSchema()), [loading]);
 
   return (
-    <div className="documentation">
-      <img
-        src={doc}
-        className="documentation__button"
-        onClick={openDocumentation}
-      />
+    <>
       {ifSchema && schema && (
         <TypeItem schema={schema} isOpenDocumentation={isOpenDocumentation} />
       )}
-    </div>
+    </>
   );
 };
