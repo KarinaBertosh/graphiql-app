@@ -40,8 +40,8 @@ export const Schema = () => {
         className="documentation__button"
         onClick={openDocumentation}
       />
-      {isOpenDocumentation && ifSchema && schema && (
-        <TypeItem schema={schema} />
+      {ifSchema && schema && (
+        <TypeItem schema={schema} isOpenDocumentation={isOpenDocumentation} />
       )}
     </div>
   );

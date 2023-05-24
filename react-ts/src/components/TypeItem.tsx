@@ -1,7 +1,13 @@
 import { useState } from "react";
 // import { GraphQLSchema } from "graphql";
 
-export const TypeItem = ({ schema }: { schema: any }) => {
+export const TypeItem = ({
+  schema,
+  isOpenDocumentation,
+}: {
+  schema: any;
+  isOpenDocumentation: boolean;
+}) => {
   const allTypes = schema.getTypeMap();
   const [currTypes, setCurrTypes] = useState(["Query"]);
   const [typeMap, setTypeMap] = useState(allTypes);
@@ -58,7 +64,7 @@ export const TypeItem = ({ schema }: { schema: any }) => {
   };
 
   return (
-    <>
+    <div className={isOpenDocumentation ? "" : "schema-closed"}>
       {prevType.length > 1 && (
         <p
           className="type-name"
@@ -97,6 +103,6 @@ export const TypeItem = ({ schema }: { schema: any }) => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };

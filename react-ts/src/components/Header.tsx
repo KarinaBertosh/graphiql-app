@@ -50,6 +50,7 @@ export const Header = () => {
         <Button
           buttonText={t("log_out")}
           buttonAction={() => {
+            router("/");
             logoutUser();
           }}
         />
