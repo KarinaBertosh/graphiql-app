@@ -4,6 +4,8 @@ import { UserLoginData } from "../interfaces/databaseInterfaces";
 import { ErrorMessage } from "./ErrorMessage";
 import { AuthContext } from "../context/AuthProvider";
 import { ILoginFormValues } from "../interfaces/componentsInterfaces";
+import { useTranslation } from "react-i18next";
+import i18n from "../localization/i18next";
 
 interface AuthFormProps {
   submitHandler: SubmitHandler<ILoginFormValues>;
@@ -20,12 +22,14 @@ export const AuthForm = ({
   authData,
   error,
 }: AuthFormProps) => {
+  const { t } = useTranslation();
   const { ifLoginExist } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     watch,
     reset,
+    trigger,
     formState: { errors },
   } = useForm<ILoginFormValues>({
     reValidateMode: "onSubmit",
@@ -35,22 +39,26 @@ export const AuthForm = ({
     reset();
   }, [ifLoginExist]);
 
+  useEffect(() => {
+    (errors.login || errors.password) && trigger();
+  }, [i18n.language]);
+
   return (
     <form onSubmit={handleSubmit(submitHandler)} className="form">
       <p>
-        {ifLoginExist && "Login with your email and password"}
-        {!ifLoginExist && "Register new user"}
+        {ifLoginExist && t("form.login")}
+        {!ifLoginExist && t("form.register")}
       </p>
       <input
         type="email"
         id="email"
         className="form__input"
-        placeholder="Enter login"
+        placeholder={t("form.login_placeholder")!}
         {...register("login", {
-          required: "required",
+          required: t("form.email_required") as string,
           pattern: {
             value: /\S+@\S+\.\S+/,
-            message: "Entered value does not match email format",
+            message: t("form.email_error"),
           },
         })}
         aria-invalid={errors.login ? "true" : "false"}
@@ -64,15 +72,12 @@ export const AuthForm = ({
         type="password"
         id="password"
         className="form__input"
-        placeholder="Enter password"
+        placeholder={t("form.password_placeholder")!}
         {...register("password", {
-          required: "required",
-          validate: {
-            allRules: (value = "") =>
-              /^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
-                value
-              ) ||
-              "Minimum eight characters, at least one letter, one number and one special character",
+          required: t("form.password_required") as string,
+          pattern: {
+            value: /^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+            message: t("form.password_error"),
           },
         })}
         aria-invalid={errors.password ? "true" : "false"}
@@ -88,12 +93,12 @@ export const AuthForm = ({
           type="password"
           id="passwordRepeat"
           className="form__input"
-          placeholder="Repeat your password"
+          placeholder={t("form.password_repeat_placeholder")!}
           {...register("passwordRepeat", {
-            required: "required",
+            required: t("form.password_required") as string,
             validate: (val) => {
               if (watch("password") != val) {
-                return "Your passwords do no match";
+                return t("form.password_repeat_error")!;
               }
             },
           })}
@@ -112,8 +117,8 @@ export const AuthForm = ({
         className="py-2 px-4 border active:shadow-inner py-2 px-4 rounded hover:bg-slate-100"
         type="submit"
       >
-        {ifLoginExist && "Login"}
-        {!ifLoginExist && "Register"}
+        {ifLoginExist && t("Login")}
+        {!ifLoginExist && t("register")}
       </button>
     </form>
   );

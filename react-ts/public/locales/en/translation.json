@@ -1,5 +1,18 @@
 {
+  "form": {
+    "register": "Register new user",
+    "login": "Login with your email and password",
+    "login_placeholder": "Enter login",
+    "email_required": "An email field is required",
+    "email_error": "Entered value does not match email format",
+    "password_placeholder": "Enter password",
+    "password_required": "Password field is required",
+    "password_error": "Minimum eight characters, at least one leter, one number and one special character",
+    "password_repeat_placeholder": "Repeat your password",
+    "password_repeat_error": "Your passwords do no match"
+  },
   "login": "Login",
+  "register": "Register",
   "en": "English",
   "ru": "Russian",
   "Elina": "Elina",
