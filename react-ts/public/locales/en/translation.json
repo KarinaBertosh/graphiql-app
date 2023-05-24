@@ -11,8 +11,19 @@
     "password_repeat_placeholder": "Repeat your password",
     "password_repeat_error": "Your passwords do no match"
   },
+  "welcome_page": {
+    "description_title": "GraphQL is an open source data query language and data manipulation language for building web-based APIs. GraphQL was developed as an internal project by Facebook in 2012 and was later released to the public in 2015.",
+    "languages": "Programming languages:",
+    "languages_list": "JavaScript, Java, Ruby, Scala.",
+    "appeared": "Appeared in: ",
+    "date": "14.09.2015.",
+    "developer": "Developer:",
+    "FB": "Facebook"
+  },
   "login": "Login",
   "register": "Register",
+  "already_registered": "Already registered?",
+  "not_registered": "Not registered?",
   "en": "English",
   "ru": "Russian",
   "Elina": "Elina",

@@ -1,20 +1,23 @@
 import graphql from "../assets/graphql.svg";
 import "./style.scss";
+import { useTranslation } from "react-i18next";
 
 export const WelcomePage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="pages ">
       <div className="description">
         <img src={graphql} alt="graphql" className="description__img" />
         <div className="description__title">
-          GraphQL is an open source data query language and data manipulation
-          language for building web-based APIs. GraphQL was developed as an
-          internal project by Facebook in 2012 and was later released to the
-          public in 2015. <br />
-          <strong>Programming languages: </strong> JavaScript, Java, Ruby, Scala.{" "}
+          {t("welcome_page.description_title")}
           <br />
-          <strong>Appeared in: </strong> 14.09.2015. <br />
-          <strong>Developer: </strong> Facebook
+          <strong> {t("welcome_page.languages")} </strong>{" "}
+          {t("welcome_page.languages_list")} <br />
+          <strong>{t("welcome_page.appeared")}</strong> {t("welcome_page.date")}{" "}
+          <br />
+          <strong>{t("welcome_page.developer")} </strong>{" "}
+          {t("welcome_page.FB")}
         </div>
       </div>
     </div>

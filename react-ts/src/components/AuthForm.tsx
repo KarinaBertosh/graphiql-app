@@ -117,7 +117,7 @@ export const AuthForm = ({
         className="py-2 px-4 border active:shadow-inner py-2 px-4 rounded hover:bg-slate-100"
         type="submit"
       >
-        {ifLoginExist && t("Login")}
+        {ifLoginExist && t("login")}
         {!ifLoginExist && t("register")}
       </button>
     </form>
