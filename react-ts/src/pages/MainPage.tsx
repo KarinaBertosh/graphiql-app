@@ -5,7 +5,6 @@ import { Response } from "../components/Response";
 import { Schema } from "../components/Schema";
 import { Modal } from "../components/Modal";
 
-
 export const MainPage = () => {
   const defaultValue = `query MyQuery {
     character(id: "2") {
@@ -27,7 +26,7 @@ export const MainPage = () => {
   const [addData, setAddData] = useState(defaultValue);
   const [ifRequest, setIfRequest] = useState(false);
   const [error, setError] = useState("");
-  const [errorSyntax, setErrorSyntax] = useState();
+  const [errorSyntax, setErrorSyntax] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const getData = () => {
@@ -46,7 +45,7 @@ export const MainPage = () => {
   };
 
   const setActive = () => {
-    setErrorSyntax('');
+    setErrorSyntax("");
     setIsOpenModal(!isOpenModal);
   };
 
@@ -70,11 +69,7 @@ export const MainPage = () => {
       {ifRequest && !error && <Response addData={request} />}
       {error && <textarea value={error}></textarea>}
       {errorSyntax ? (
-        <Modal
-          error={errorSyntax}
-          active={isOpenModal}
-          setActive={setActive}
-        />
+        <Modal error={errorSyntax} active={isOpenModal} setActive={setActive} />
       ) : (
         ""
       )}

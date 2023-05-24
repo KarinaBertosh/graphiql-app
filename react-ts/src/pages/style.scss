@@ -4,18 +4,51 @@
   height: 100%;
 }
 
+.welcome-page {
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+  gap: 2em;
+}
+
+.welcome-page a {
+  color: #ff7f93;
+}
+
+.title {
+  font-size: 2rem;
+}
+
 .description {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 5px;
   &__img {
-    width: 50%;
+    width: 20%;
     margin-right: 20px;
   }
   &__title {
     width: 50%;
   }
+}
+
+.author {
+  display: flex;
+  flex: 1;
+  text-align: center;
+  flex-direction: column;
+  gap: 1em;
+  background-color: #eaeaea;
+  align-items: center;
+  padding: 1em 2em;
+  border-radius: 1em;
+}
+
+.author-description {
+  gap: 2em;
+  padding: 2em;
+  align-items: stretch;
 }
 
 .documentation {
@@ -110,6 +143,9 @@ textarea {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
   padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 .form__input {
@@ -119,7 +155,6 @@ textarea {
   padding-left: 1rem;
   padding-right: 1rem;
   width: 100%;
-  margin-bottom: 0.5rem;
 }
 
 @media screen and (min-width: 540px) and (max-width: 730px) {
@@ -158,5 +193,10 @@ textarea {
     top: 4px;
     left: 216px;
     width: 30px;
+  }
+
+  .author-description {
+    flex-direction: column;
+    font-size: 12px;
   }
 }
