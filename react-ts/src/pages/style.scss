@@ -1,8 +1,7 @@
 .pages {
   display: flex;
-  padding: 50px 50px;
+  padding: 10px;
   height: 100%;
-  flex: 1;
 }
 
 .description {
@@ -19,13 +18,8 @@
   }
 }
 
-.main-page {
-  padding: 10px;
-  align-items: flex-start;
-}
-
 .documentation {
-  display: flex;
+  // display: flex;
   align-items: flex-start;
   justify-content: space-between;
   margin-right: 10px;
@@ -45,7 +39,7 @@
     &__start {
       position: absolute;
       top: 9px;
-      left: 350px;
+      left: 340px;
       width: 45px;
       cursor: pointer;
       &:hover {
@@ -70,16 +64,17 @@ textarea {
   font-weight: 400;
   color: #2bab7c;
   overflow-wrap: break-word;
+  white-space: pre;
 }
 
 .redactor {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  position: relative;
   flex-direction: column;
   margin-right: 10px;
   height: 100%;
+  position: relative;
 }
 
 .received-code {
@@ -127,7 +122,6 @@ textarea {
   margin-bottom: 0.5rem;
 }
 
-
 @media screen and (min-width: 540px) and (max-width: 730px) {
   .main-page {
     flex-direction: column;
@@ -166,4 +160,3 @@ textarea {
     width: 30px;
   }
 }
-

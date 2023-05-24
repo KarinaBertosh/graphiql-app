@@ -18,11 +18,14 @@ export const Response = ({ addData }: { addData: DocumentNode }) => {
         return "Loading ...";
       }
       if (error) {
-        return `Error: ${JSON.stringify(error.message)}`;
+        return (
+          <div style={{ whiteSpace: "normal" }}>
+            Error: {JSON.stringify(error.message)}
+          </div>
+        );
       }
       return JSON.stringify(data, replaceText, "\t");
     } catch (errors) {
-      console.error(errors);
       return JSON.stringify(errors);
     }
   };
