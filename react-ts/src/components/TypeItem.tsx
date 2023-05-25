@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { GraphQLSchema } from "graphql";
 
 export const TypeItem = ({ schema }: { schema: any }) => {
   const allTypes = schema.getTypeMap();
@@ -7,9 +6,6 @@ export const TypeItem = ({ schema }: { schema: any }) => {
   const [typeMap, setTypeMap] = useState(allTypes);
   const [prevType, setPrevType] = useState([""]);
   const [title, setTitle] = useState("Docs");
-
-  console.log(allTypes);
-
   const upperCase = (type: string) =>
     type.charAt(0).toUpperCase() + type.slice(1);
 

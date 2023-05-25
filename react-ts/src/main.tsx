@@ -6,15 +6,16 @@ import { firebaseConfig } from "./firebaseConfig/farebaseConfig";
 import "./localization/i18next";
 import "./main.scss";
 import { routerObj } from "./router/RouterConfig";
-import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider, SuspenseCache } from "@apollo/client";
 import client from "./apollo/client";
+const suspenseCache = new SuspenseCache();
 
 firebase.initializeApp(firebaseConfig);
 const router = createBrowserRouter(routerObj);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
+    <ApolloProvider client={client} suspenseCache={suspenseCache}>
       <Suspense fallback="...loading">
         <RouterProvider router={router} />
       </Suspense>
