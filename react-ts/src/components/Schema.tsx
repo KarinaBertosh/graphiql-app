@@ -2,22 +2,22 @@ import { useEffect, useState, Suspense } from "react";
 import { gql } from "@apollo/client";
 import { GraphQLSchema, buildClientSchema } from "graphql";
 import { SCHEMA } from "../apollo/schema";
-import doc from "../assets/doc.png";
 import { TypeItem } from "./TypeItem";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 
-export const Schema = () => {
+
+export const Schema = ({
+  isOpenDocumentation,
+}: {
+  isOpenDocumentation: boolean;
+}) => {
   const { error, data } = useSuspenseQuery(gql`
     ${SCHEMA}
   `);
 
   const [ifSchema, setIfSchema] = useState(false);
-  const [isOpenDocumentation, setIsOpenDocumentation] = useState(false);
-  const [schema, setSchema] = useState<GraphQLSchema | null>(null);
 
-  const openDocumentation = () => {
-    setIsOpenDocumentation(!isOpenDocumentation);
-  };
+  const [schema, setSchema] = useState<GraphQLSchema | null>(null);
 
   const getSchema = () => {
     if (error) {
@@ -37,11 +37,9 @@ export const Schema = () => {
         className="documentation__button"
         onClick={openDocumentation}
       />
-      {isOpenDocumentation && ifSchema && schema && (
+      {ifSchema && schema && (
         <Suspense fallback="...loading">
-          <TypeItem schema={schema} />
+          <TypeItem schema={schema} isOpenDocumentation={isOpenDocumentation} />
         </Suspense>
       )}
-    </div>
   );
-};
