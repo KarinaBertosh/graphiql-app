@@ -4,6 +4,7 @@ import start from "../assets/start.png";
 import { Response } from "../components/Response";
 import { Schema } from "../components/Schema";
 import { Modal } from "../components/Modal";
+import doc from "../assets/doc.png";
 
 
 export const MainPage = () => {
@@ -27,8 +28,10 @@ export const MainPage = () => {
   const [addData, setAddData] = useState(defaultValue);
   const [ifRequest, setIfRequest] = useState(false);
   const [error, setError] = useState("");
-  const [errorSyntax, setErrorSyntax] = useState();
+  const [errorSyntax, setErrorSyntax] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenDocumentation, setIsOpenDocumentation] = useState(false);
+  const [isOpenVariables, setIsOpenVariables] = useState(true);
 
   const getData = () => {
     try {
@@ -46,35 +49,48 @@ export const MainPage = () => {
   };
 
   const setActive = () => {
-    setErrorSyntax('');
+    setErrorSyntax("");
     setIsOpenModal(!isOpenModal);
   };
 
   return (
     <main className="pages main-page">
-      <Schema />
-      <div className="redactor">
-        <textarea
-          id="addData"
-          placeholder="Code"
-          value={addData}
-          onChange={(e) => setAddData(e.target.value)}
-        ></textarea>
-        <textarea placeholder="Variables"></textarea>
+      <div className="documentation">
         <img
-          src={start}
-          className="documentation__button__start"
-          onClick={getData}
+          src={doc}
+          className="documentation__button"
+          onClick={() => setIsOpenDocumentation(!isOpenDocumentation)}
         />
       </div>
-      {ifRequest && !error && <Response addData={request} />}
-      {error && <textarea value={error}></textarea>}
+      <div className="request-part flex-grow">
+        <Schema isOpenDocumentation={isOpenDocumentation} />
+        <div className="redactor flex-grow">
+          <textarea
+            id="addData"
+            placeholder="Code"
+            value={addData}
+            onChange={(e) => setAddData(e.target.value)}
+          ></textarea>
+          <p
+            className="type-name"
+            onClick={() => setIsOpenVariables(!isOpenVariables)}
+          >
+            Variables
+          </p>
+          {isOpenVariables && <textarea></textarea>}
+          <img
+            src={start}
+            className="documentation__button__start"
+            onClick={getData}
+          />
+        </div>
+        <div className="flex-grow">
+          {ifRequest && !error && <Response addData={request} />}
+          {error && <div className="response">{error}</div>}
+        </div>
+      </div>
       {errorSyntax ? (
-        <Modal
-          error={errorSyntax}
-          active={isOpenModal}
-          setActive={setActive}
-        />
+        <Modal error={errorSyntax} active={isOpenModal} setActive={setActive} />
       ) : (
         ""
       )}
