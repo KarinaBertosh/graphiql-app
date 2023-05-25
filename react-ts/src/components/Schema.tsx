@@ -5,7 +5,6 @@ import { SCHEMA } from "../apollo/schema";
 import { TypeItem } from "./TypeItem";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 
-
 export const Schema = ({
   isOpenDocumentation,
 }: {
@@ -14,9 +13,7 @@ export const Schema = ({
   const { error, data } = useSuspenseQuery(gql`
     ${SCHEMA}
   `);
-
   const [ifSchema, setIfSchema] = useState(false);
-
   const [schema, setSchema] = useState<GraphQLSchema | null>(null);
 
   const getSchema = () => {
@@ -31,15 +28,12 @@ export const Schema = ({
   useEffect(() => setSchema(getSchema()), []);
 
   return (
-    <div className="documentation">
-      <img
-        src={doc}
-        className="documentation__button"
-        onClick={openDocumentation}
-      />
+    <>
       {ifSchema && schema && (
         <Suspense fallback="...loading">
           <TypeItem schema={schema} isOpenDocumentation={isOpenDocumentation} />
         </Suspense>
       )}
+    </>
   );
+};
