@@ -10,6 +10,14 @@ export const Header = () => {
   const router = useNavigate();
   const { t } = useTranslation();
 
+  window.addEventListener('scroll', function() {
+  if (pageYOffset > 50) {
+    document.querySelector('.header').classList.add('active')
+  } else {
+    document.querySelector('.header').classList.remove('active')
+  }
+})
+
   return (
     <header className="header">
       <nav>
