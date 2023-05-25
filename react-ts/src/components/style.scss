@@ -44,7 +44,6 @@
   display: flex;
   justify-content: flex-start;
   color: #ff7f93;
-  // text-align: center;
   font-size: 0.8rem;
 }
 
@@ -95,4 +94,8 @@
 .type-name {
   cursor: pointer;
   color: #ff7f93;
+}
+
+.schema-closed {
+  display: none;
 }
