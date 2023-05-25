@@ -6,6 +6,7 @@ import { Schema } from "../components/Schema";
 import { Modal } from "../components/Modal";
 import doc from "../assets/doc.png";
 
+
 export const MainPage = () => {
   const defaultValue = `query MyQuery {
     character(id: "2") {
