@@ -11,7 +11,9 @@ import client from "./apollo/client";
 const suspenseCache = new SuspenseCache();
 
 firebase.initializeApp(firebaseConfig);
-const router = createBrowserRouter(routerObj);
+const router = createBrowserRouter(routerObj, {
+  basename: "/graphiql-app/",
+});
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
