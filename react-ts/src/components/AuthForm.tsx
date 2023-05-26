@@ -65,9 +65,7 @@ export const AuthForm = ({
         value={authData.email}
         onChange={handleChange}
       />
-      <div className="error-wrapper">
-        {errors.login && <ErrorMessage error={String(errors.login.message)} />}
-      </div>
+      {errors.login && <ErrorMessage error={String(errors.login.message)} />}
       <input
         type="password"
         id="password"
@@ -83,11 +81,9 @@ export const AuthForm = ({
         aria-invalid={errors.password ? "true" : "false"}
         onChange={handleChange}
       />
-      <div className="error-wrapper">
-        {errors.password && (
-          <ErrorMessage error={String(errors.password.message)} />
-        )}
-      </div>
+      {errors.password && (
+        <ErrorMessage error={String(errors.password.message)} />
+      )}
       {!ifLoginExist && (
         <input
           type="password"
@@ -106,19 +102,14 @@ export const AuthForm = ({
           onChange={handleChange}
         />
       )}
-      <div className="error-wrapper">
-        {errors.passwordRepeat && (
-          <ErrorMessage error={String(errors.passwordRepeat.message)} />
-        )}
-      </div>
+      {errors.passwordRepeat && (
+        <ErrorMessage error={String(errors.passwordRepeat.message)} />
+      )}
       {error && <ErrorMessage error={error} />}
 
-      <button
-        className="py-2 px-4 border active:shadow-inner py-2 px-4 rounded hover:bg-slate-100"
-        type="submit"
-      >
-        {ifLoginExist && t("login")}
-        {!ifLoginExist && t("register")}
+      <button type="submit">
+        {ifLoginExist && "Login"}
+        {!ifLoginExist && "Register"}
       </button>
     </form>
   );

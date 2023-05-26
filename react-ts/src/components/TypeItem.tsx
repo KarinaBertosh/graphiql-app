@@ -1,14 +1,17 @@
 import { useState } from "react";
-// import { GraphQLSchema } from "graphql";
 
-export const TypeItem = ({ schema }: { schema: any }) => {
+export const TypeItem = ({
+  schema,
+  isOpenDocumentation,
+}: {
+  schema: any;
+  isOpenDocumentation: boolean;
+}) => {
   const allTypes = schema.getTypeMap();
   const [currTypes, setCurrTypes] = useState(["Query"]);
   const [typeMap, setTypeMap] = useState(allTypes);
   const [prevType, setPrevType] = useState([""]);
   const [title, setTitle] = useState("Docs");
-
-  console.log(allTypes);
 
   const upperCase = (type: string) =>
     type.charAt(0).toUpperCase() + type.slice(1);
@@ -57,8 +60,29 @@ export const TypeItem = ({ schema }: { schema: any }) => {
       : typeMap[el.toLowerCase()].name;
   };
 
+  const createArgs = (el: string) => {
+    const args = typeMap[el].args;
+    return (
+      "(" +
+      args.map((arg: any) => {
+        return (
+          arg.name +
+          ": " +
+          (arg.type.name
+            ? arg.type.name
+            : arg.type.ofType.name
+            ? arg.type.ofType.name
+            : arg.type.ofType.ofType.ofType.name)
+        );
+      }) +
+      ")"
+    );
+  };
+
   return (
-    <>
+    <div
+      className={"flex-grow" + (isOpenDocumentation ? "" : " schema-closed")}
+    >
       {prevType.length > 1 && (
         <p
           className="type-name"
@@ -77,6 +101,9 @@ export const TypeItem = ({ schema }: { schema: any }) => {
             {el}
             {typeMap[el] && (
               <>
+                {typeMap[el].args &&
+                  typeMap[el].args.length > 0 &&
+                  createArgs(el)}
                 {": "}
                 <span
                   className="type-name"
@@ -97,6 +124,6 @@ export const TypeItem = ({ schema }: { schema: any }) => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
