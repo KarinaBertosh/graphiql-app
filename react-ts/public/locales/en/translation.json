@@ -12,13 +12,14 @@
     "password_repeat_error": "Your passwords do no match"
   },
   "welcome_page": {
-    "description_title": "GraphQL is an open source data query language and data manipulation language for building web-based APIs. GraphQL was developed as an internal project by Facebook in 2012 and was later released to the public in 2015.",
-    "languages": "Programming languages:",
-    "languages_list": "JavaScript, Java, Ruby, Scala.",
-    "appeared": "Appeared in: ",
-    "date": "14.09.2015.",
-    "developer": "Developer:",
-    "FB": "Facebook"
+    "description_title": " The Graphql App is an original app, created by students of",
+    "course": "RS School React course",
+    "details": "For more information about used technologies, please visit the",
+    "github": "github page",
+    "about_authors": "About authors",
+    "team_leader": "team-leader",
+    "developer": "developer",
+    "designer": "designer"
   },
   "login": "Login",
   "register": "Register",
@@ -35,5 +36,11 @@
   "sign_up": "Sign Up",
   "log_out": "Log Out",
   "welcome": "Welcome page",
-  "main": "Main page"
+  "main": "Main page",
+  "loading": "Loading...",
+  "error": "Error: ",
+  "docs": "Docs",
+  "query": "Query",
+  "404_page": "Page not found"
+
 }

@@ -4,8 +4,6 @@ import { Button } from "./Button";
 import { AuthContext } from "../context/AuthProvider";
 import { LanguageSelect } from "./LanguageSelect";
 import { useTranslation } from "react-i18next";
-import i18n from "../localization/i18next";
-
 
 export const Header = () => {
   const { setIfLoginExist, user, logoutUser } = useContext(AuthContext);

@@ -108,8 +108,8 @@ export const AuthForm = ({
       {error && <ErrorMessage error={error} />}
 
       <button type="submit">
-        {ifLoginExist && "Login"}
-        {!ifLoginExist && "Register"}
+        {ifLoginExist && t("login")}
+        {!ifLoginExist && t("register")}
       </button>
     </form>
   );
