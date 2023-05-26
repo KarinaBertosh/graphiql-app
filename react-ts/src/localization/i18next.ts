@@ -11,6 +11,9 @@ i18n
     fallbackLng: "en",
     // debug: true, //убрать потом
     supportedLngs: ["en", "ru"],
+    backend: {
+      loadPath: "locales/{{lng}}/{{ns}}.json",
+    },
   });
 
 export default i18n;

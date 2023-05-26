@@ -1,6 +1,6 @@
 import { useEffect, useState, Suspense } from "react";
 import { gql } from "@apollo/client";
-import { GraphQLSchema, buildClientSchema } from "graphql";
+import { GraphQLSchema, buildClientSchema, IntrospectionQuery } from "graphql";
 import { SCHEMA } from "../apollo/schema";
 import { TypeItem } from "./TypeItem";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
@@ -22,7 +22,7 @@ export const Schema = ({
       return null;
     }
     setIfSchema(true);
-    return buildClientSchema(data);
+    return buildClientSchema(data as IntrospectionQuery);
   };
 
   useEffect(() => setSchema(getSchema()), []);
