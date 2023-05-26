@@ -1,27 +1,22 @@
-import { useEffect, useState } from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useEffect, useState, Suspense } from "react";
+import { gql } from "@apollo/client";
 import { GraphQLSchema, buildClientSchema } from "graphql";
 import { SCHEMA } from "../apollo/schema";
 import { TypeItem } from "./TypeItem";
+import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 
 export const Schema = ({
   isOpenDocumentation,
 }: {
   isOpenDocumentation: boolean;
 }) => {
-  const { loading, error, data } = useQuery(gql`
+  const { error, data } = useSuspenseQuery(gql`
     ${SCHEMA}
   `);
-
   const [ifSchema, setIfSchema] = useState(false);
-
   const [schema, setSchema] = useState<GraphQLSchema | null>(null);
 
   const getSchema = () => {
-    if (loading) {
-      setIfSchema(false);
-      return null;
-    }
     if (error) {
       setIfSchema(false);
       return null;
@@ -30,12 +25,14 @@ export const Schema = ({
     return buildClientSchema(data);
   };
 
-  useEffect(() => setSchema(getSchema()), [loading]);
+  useEffect(() => setSchema(getSchema()), []);
 
   return (
     <>
       {ifSchema && schema && (
-        <TypeItem schema={schema} isOpenDocumentation={isOpenDocumentation} />
+        <Suspense fallback="...loading">
+          <TypeItem schema={schema} isOpenDocumentation={isOpenDocumentation} />
+        </Suspense>
       )}
     </>
   );

@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { GraphQLSchema } from "graphql";
 
 export const TypeItem = ({
   schema,

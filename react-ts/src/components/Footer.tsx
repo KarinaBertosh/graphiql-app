@@ -9,7 +9,7 @@ export const Footer = () => {
     <div className="footer">
       <div className="github">
         <a href="https://github.com/Elina-nep">{t("Elina")}</a>
-        <a href="https://github.com/makhitr">{t('Marina')}</a>
+        <a href="https://github.com/makhitr">{t("Marina")}</a>
         <a href="https://github.com/KarinaBertosh">{t("Karina")}</a>
       </div>
       <div className="footer__logo-container">
