@@ -19,7 +19,10 @@
     "about_authors": "About authors",
     "team_leader": "team-leader",
     "developer": "developer",
-    "designer": "designer"
+    "designer": "designer",
+    "elina_implemented": "Implemented: user authorization through firebase, obtaining documentation and displaying it on the page, block of variables, application deployment, routing, form validation.",
+    "marina_implemented": "Implemented: localization, form validation.",
+    "karina_implemented": "Implemented: request editor, request response block, localization, layout of components, pop-up syntax errors, sticky and animated header."
   },
   "login": "Login",
   "register": "Register",

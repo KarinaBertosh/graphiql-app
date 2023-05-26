@@ -11,7 +11,6 @@ export const WelcomePage = () => {
       <div className="description">
         <img src={graphql} alt="graphql" className="description__img" />
         <div className="description__title">
-
           <p>
           {t("welcome_page.description_title")}
             <a href="https://rs.school/react/"> {t("welcome_page.course")}</a>. It
@@ -35,7 +34,7 @@ export const WelcomePage = () => {
             <i>{t("welcome_page.team_leader")}, {t("welcome_page.developer")}</i>
           </p>
           <p>
-            Realized: login and register page, documentation on main page...
+          {t("welcome_page.elina_implemented")}
           </p>
         </div>
         <div className="author">
@@ -45,7 +44,7 @@ export const WelcomePage = () => {
           <p>
             <i>{t("welcome_page.developer")}</i>
           </p>
-          <p>Some things done</p>
+          <p>{t("welcome_page.marina_implemented")}</p>
         </div>
         <div className="author">
           <h4>
@@ -54,7 +53,7 @@ export const WelcomePage = () => {
           <p>
             <i>{t("welcome_page.developer")}, {t("welcome_page.designer")}</i>
           </p>
-          <p>Some things done</p>
+          <p>{t("welcome_page.karina_implemented")}</p>
 
         </div>
       </div>
