@@ -13,7 +13,8 @@
   },
   "welcome_page": {
     "description_title": " The Graphql App is an original app, created by students of",
-    "course": "RS School React course",
+    "description_title_2": "It is a hand-made functional copy of popular open-source tool GraphiQL.",
+    "course": "RS School React course. ",
     "details": "For more information about used technologies, please visit the",
     "github": "github page",
     "about_authors": "About authors",
@@ -45,5 +46,4 @@
   "docs": "Docs",
   "query": "Query",
   "404_page": "Page not found"
-
 }

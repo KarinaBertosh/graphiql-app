@@ -2,7 +2,6 @@ export const SCHEMA = `
    
 query IntrospectionQuery {
     __schema {
-      
       queryType { name }
       mutationType { name }
       subscriptionType { name }
@@ -60,8 +59,6 @@ query IntrospectionQuery {
     description
     type { ...TypeRef }
     defaultValue
-    
-    
   }
 
   fragment TypeRef on __Type {
@@ -96,5 +93,4 @@ query IntrospectionQuery {
       }
     }
   }
-
 `;

@@ -4,10 +4,11 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import { firebaseConfig } from "./firebaseConfig/farebaseConfig";
 import "./localization/i18next";
-import "./main.scss";
 import { routerObj } from "./router/RouterConfig";
 import { ApolloProvider, SuspenseCache } from "@apollo/client";
 import client from "./apollo/client";
+import "./main.scss";
+
 const suspenseCache = new SuspenseCache();
 
 firebase.initializeApp(firebaseConfig);

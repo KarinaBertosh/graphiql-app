@@ -6,7 +6,7 @@ export const Response = ({ addData }: { addData: DocumentNode }) => {
   const { loading, error, data } = useQuery(addData);
   const { t } = useTranslation();
 
-  const replaceText = (key: any, value: any) => {
+  const replaceText = (key: string | object, value: string | object) => {
     if (key === "__typename") {
       return undefined;
     } else {
