@@ -5,6 +5,7 @@ import { UserLoginData } from "../interfaces/databaseInterfaces";
 import { AuthForm } from "../components/AuthForm";
 import { Button } from "../components/Button";
 import { ILoginFormValues } from "../interfaces/componentsInterfaces";
+import { useTranslation } from "react-i18next";
 
 export const AuthPage = () => {
   const [authData, setAuthData] = useState<UserLoginData>({
@@ -15,6 +16,7 @@ export const AuthPage = () => {
   const [error, setError] = useState("");
   const { loginUser, registerUser, ifLoginExist, setIfLoginExist } =
     useContext(AuthContext);
+  const { t } = useTranslation();
 
   const handleChange = ({
     target: { value, id },
@@ -39,18 +41,18 @@ export const AuthPage = () => {
         <div className="form__title">
           {!ifLoginExist && (
             <>
-              <h3>Already registered?</h3>
+              <h3>{t("already_registered")}</h3>
               <Button
-                buttonText={"Login"}
+                buttonText={t("login")}
                 buttonAction={() => setIfLoginExist(true)}
               />
             </>
           )}
           {ifLoginExist && (
             <>
-              <h3>Not registered?</h3>
+              <h3>{t("not_registered")}</h3>
               <Button
-                buttonText={"Register"}
+                buttonText={t("register")}
                 buttonAction={() => setIfLoginExist(false)}
               />
             </>

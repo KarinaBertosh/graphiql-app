@@ -1,3 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 export const NotFoundPage = () => {
-  return <div className="pages">Oops, 404</div>;
+  const { t } = useTranslation();
+
+  return <div className="pages">{t("404_page")}</div>;
 };

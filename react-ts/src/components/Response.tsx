@@ -1,10 +1,12 @@
 import { useQuery } from "@apollo/client";
 import { DocumentNode } from "graphql";
+import { useTranslation } from "react-i18next";
 
 export const Response = ({ addData }: { addData: DocumentNode }) => {
   const { loading, error, data } = useQuery(addData);
+  const { t } = useTranslation();
 
-  const replaceText = (key: any, value: any) => {
+  const replaceText = (key: string | object, value: string | object) => {
     if (key === "__typename") {
       return undefined;
     } else {
@@ -15,12 +17,12 @@ export const Response = ({ addData }: { addData: DocumentNode }) => {
   const getData = () => {
     try {
       if (loading) {
-        return "Loading ...";
+        return t("loading");
       }
       if (error) {
         return (
           <div style={{ whiteSpace: "normal" }}>
-            Error: {JSON.stringify(error.message)}
+            {t("error")} {JSON.stringify(error.message)}
           </div>
         );
       }

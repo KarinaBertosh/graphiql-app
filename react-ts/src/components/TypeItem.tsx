@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const TypeItem = ({
   schema,
@@ -7,20 +8,21 @@ export const TypeItem = ({
   schema: any;
   isOpenDocumentation: boolean;
 }) => {
+  const { t } = useTranslation();
   const allTypes = schema.getTypeMap();
-  const [currTypes, setCurrTypes] = useState(["Query"]);
+  const [currTypes, setCurrTypes] = useState([t("query")]);
   const [typeMap, setTypeMap] = useState(allTypes);
   const [prevType, setPrevType] = useState([""]);
-  const [title, setTitle] = useState("Docs");
+  const [title, setTitle] = useState(t("docs"));
 
   const upperCase = (type: string) =>
     type.charAt(0).toUpperCase() + type.slice(1);
 
   const setCurrTypeArr = (el: string) => {
-    if (el === "Docs") {
-      setCurrTypes(["Query"]);
+    if (el === t("docs")) {
+      setCurrTypes([t("query")]);
       setTypeMap(allTypes);
-      setTitle("Docs");
+      setTitle(t("docs"));
       return;
     }
     const type = createType(el);
