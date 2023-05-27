@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { DocumentNode } from "graphql";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const Response = ({
   addData,
@@ -10,6 +11,7 @@ export const Response = ({
   variablesStr: string;
 }) => {
   const [variables, setVariables] = useState({});
+  const { t } = useTranslation();
 
   useEffect(() => {
     try {
