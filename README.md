@@ -6,14 +6,19 @@
 - Marina - https://github.com/makhitr
 
 ## Deploy
-
+https://elina-nep.github.io/graphiql-app/
+реализован с использованием GitHub Actions (workflow)
 
 ## Technologies
-- typescript - была выбрана для уменьшения ошибок и ошибок интеграции модулей в задаче.
+- typescript
 - firebase
 - react-router-dom
 - sass
-- tailwindcss
+- apollo/client
+- i18next
+- eslint
+- vite
+- react-hook-form
 
 ## Available scripts
 
@@ -26,4 +31,8 @@
 Билд оптимизирован и готов к разворачиванию на сервере.
 
 ### `lint`
+запуск eslint
+
+### `preview`
+запуск превью билда
 
