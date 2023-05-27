@@ -4,6 +4,7 @@ import { GraphQLSchema, buildClientSchema, IntrospectionQuery } from "graphql";
 import { SCHEMA } from "../apollo/schema";
 import { TypeItem } from "./TypeItem";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
+import { useTranslation } from "react-i18next";
 
 export const Schema = ({
   isOpenDocumentation,
@@ -15,7 +16,7 @@ export const Schema = ({
   `);
   const [ifSchema, setIfSchema] = useState(false);
   const [schema, setSchema] = useState<GraphQLSchema | null>(null);
-
+  const { t } = useTranslation();
   const getSchema = () => {
     if (error) {
       setIfSchema(false);
@@ -30,7 +31,7 @@ export const Schema = ({
   return (
     <>
       {ifSchema && schema && (
-        <Suspense fallback="...loading">
+        <Suspense fallback={t("loading")}>
           <TypeItem schema={schema} isOpenDocumentation={isOpenDocumentation} />
         </Suspense>
       )}

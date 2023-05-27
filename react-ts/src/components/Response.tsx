@@ -27,6 +27,7 @@ export const Response = ({
   });
 
   const replaceText = (key: string, value: string) => {
+
     if (key === "__typename") {
       return undefined;
     } else {
@@ -37,12 +38,12 @@ export const Response = ({
   const getData = () => {
     try {
       if (loading) {
-        return "Loading ...";
+        return t("loading");
       }
       if (error) {
         return (
           <div style={{ whiteSpace: "normal" }}>
-            Error: {JSON.stringify(error.message)}
+            {t("error")} {JSON.stringify(error.message)}
           </div>
         );
       }

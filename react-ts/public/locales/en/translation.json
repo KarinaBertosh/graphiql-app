@@ -1,5 +1,34 @@
 {
+  "form": {
+    "register": "Register new user",
+    "login": "Login with your email and password",
+    "login_placeholder": "Enter login",
+    "email_required": "An email field is required",
+    "email_error": "Entered value does not match email format",
+    "password_placeholder": "Enter password",
+    "password_required": "Password field is required",
+    "password_error": "Minimum eight characters, at least one leter, one number and one special character",
+    "password_repeat_placeholder": "Repeat your password",
+    "password_repeat_error": "Your passwords do no match"
+  },
+  "welcome_page": {
+    "description_title": " The Graphql App is an original app, created by students of",
+    "description_title_2": "It is a hand-made functional copy of popular open-source tool GraphiQL.",
+    "course": "RS School React course. ",
+    "details": "For more information about used technologies, please visit the",
+    "github": "github page",
+    "about_authors": "About authors",
+    "team_leader": "team-leader",
+    "developer": "developer",
+    "designer": "designer",
+    "elina_implemented": "Implemented: user authorization through firebase, obtaining documentation and displaying it on the page, block of variables, application deployment, routing, form validation.",
+    "marina_implemented": "Implemented: localization, form validation.",
+    "karina_implemented": "Implemented: request editor, request response block, localization, layout of components, pop-up syntax errors, sticky and animated header."
+  },
   "login": "Login",
+  "register": "Register",
+  "already_registered": "Already registered?",
+  "not_registered": "Not registered?",
   "en": "English",
   "ru": "Russian",
   "Elina": "Elina",
@@ -11,5 +40,10 @@
   "sign_up": "Sign Up",
   "log_out": "Log Out",
   "welcome": "Welcome page",
-  "main": "Main page"
+  "main": "Main page",
+  "loading": "Loading...",
+  "error": "Error: ",
+  "docs": "Docs",
+  "query": "Query",
+  "404_page": "Page not found"
 }
