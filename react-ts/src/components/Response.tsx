@@ -1,12 +1,33 @@
 import { useQuery } from "@apollo/client";
 import { DocumentNode } from "graphql";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export const Response = ({ addData }: { addData: DocumentNode }) => {
-  const { loading, error, data } = useQuery(addData);
+export const Response = ({
+  addData,
+  variablesStr,
+}: {
+  addData: DocumentNode;
+  variablesStr: string;
+}) => {
+  const [variables, setVariables] = useState({});
   const { t } = useTranslation();
 
-  const replaceText = (key: string | object, value: string | object) => {
+  useEffect(() => {
+    try {
+      const varia = JSON.parse(variablesStr);
+      setVariables(varia);
+    } catch (errors) {
+      setVariables({});
+    }
+  }, [variablesStr]);
+
+  const { loading, error, data } = useQuery(addData, {
+    variables: variables,
+  });
+
+  const replaceText = (key: string, value: string) => {
+
     if (key === "__typename") {
       return undefined;
     } else {
