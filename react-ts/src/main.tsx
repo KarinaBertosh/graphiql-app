@@ -2,8 +2,8 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import {
   RouterProvider,
-  createBrowserRouter,
-  HashRouter,
+  // createBrowserRouter,
+  // HashRouter,
   createHashRouter,
 } from "react-router-dom";
 import { ApolloProvider, SuspenseCache } from "@apollo/client";
