@@ -27,7 +27,6 @@ export const Response = ({
   });
 
   const replaceText = (key: string, value: string) => {
-
     if (key === "__typename") {
       return undefined;
     } else {
