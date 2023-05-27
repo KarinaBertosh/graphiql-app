@@ -25,7 +25,7 @@ export const Schema = ({
     return buildClientSchema(data as IntrospectionQuery);
   };
 
-  useEffect(() => setSchema(getSchema()), []);
+  useEffect(() => setSchema(getSchema()), [data]);
 
   return (
     <>

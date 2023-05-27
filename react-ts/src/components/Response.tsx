@@ -1,10 +1,30 @@
 import { useQuery } from "@apollo/client";
 import { DocumentNode } from "graphql";
+import { useEffect, useState } from "react";
 
-export const Response = ({ addData }: { addData: DocumentNode }) => {
-  const { loading, error, data } = useQuery(addData);
+export const Response = ({
+  addData,
+  variablesStr,
+}: {
+  addData: DocumentNode;
+  variablesStr: string;
+}) => {
+  const [variables, setVariables] = useState({});
 
-  const replaceText = (key: any, value: any) => {
+  useEffect(() => {
+    try {
+      const varia = JSON.parse(variablesStr);
+      setVariables(varia);
+    } catch (errors) {
+      setVariables({});
+    }
+  }, [variablesStr]);
+
+  const { loading, error, data } = useQuery(addData, {
+    variables: variables,
+  });
+
+  const replaceText = (key: string, value: string) => {
     if (key === "__typename") {
       return undefined;
     } else {
