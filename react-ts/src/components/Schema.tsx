@@ -1,10 +1,10 @@
 import { useEffect, useState, Suspense } from "react";
 import { gql } from "@apollo/client";
 import { GraphQLSchema, buildClientSchema, IntrospectionQuery } from "graphql";
-import { SCHEMA } from "../apollo/schema";
-import { TypeItem } from "./TypeItem";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 import { useTranslation } from "react-i18next";
+import { SCHEMA } from "../apollo/schema";
+import { TypeItem } from "./TypeItem";
 
 export const Schema = ({
   isOpenDocumentation,
