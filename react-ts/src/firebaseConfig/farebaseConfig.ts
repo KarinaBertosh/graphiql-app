@@ -1,8 +1,9 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyAWYCXiakkL_y4F0FrzPtikuYghOau1zxk",
-  authDomain: "graphiql-d50d8.firebaseapp.com",
-  projectId: "graphiql-d50d8",
-  storageBucket: "graphiql-d50d8.appspot.com",
-  messagingSenderId: "915932982147",
-  appId: "1:915932982147:web:77bbb6ca4a102b18d264b6",
+  apiKey: "AIzaSyA-W77VIk0MjRqEA0YtSXrkypN254p1O64",
+  authDomain: "karina-graphiql.firebaseapp.com",
+  projectId: "karina-graphiql",
+  storageBucket: "karina-graphiql.appspot.com",
+  messagingSenderId: "399054752678",
+  appId: "1:399054752678:web:620c74cd8d53ffb8189d67",
+  measurementId: "G-Q23L2W945H",
 };
